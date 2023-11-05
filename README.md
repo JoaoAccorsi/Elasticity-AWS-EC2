@@ -23,17 +23,55 @@ Amazon Web Services (AWS) is a platform of Cloud Computing services offered by A
 
 This template defines the image for the creation of the Virtual Machines.
 
-✅ In the AWS Console, go to the EC2 launchpad. <br />
+✅ In the AWS Console, go to the EC2 Launchpad. <br />
 ✅ Under Instances Tab, access Launch Templates. <br />
 ✅ Create the template with the below characteristics: <br />
 
 | Configuration  | Setup
 |---|---|
-| **Launch Template Name** | Elasticity-in-AWC-EC2 |
-| **Template Version Description** | Sample Elasticity Example in AWS EC2 |
-| **Application and OS Images (Amazon Machine Image)** | Quick Start > Amazon Linux AWS > Any free tier version |
+| **Launch Template Name** | template-elasticity-in-AWS-EC2 |
+| **Template Version Description** | Template for the Elasticity Example in AWS EC2 |
+| **Application and OS Images** | Quick Start > Amazon Linux AWS > Any free tier version |
 | **Instance Type** | t2.micro |
-| **Key pair** | Any key pair that you already have, or create a new one |
+| **Key pair** | Any key pair that you already have, or create a new one to access the Operating System |
 | **Security Group** | Default |
 
-## 3. Define the Auto Scale Group
+https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/aabd5051-7a82-44c9-a2c5-86bc6f5c56b4
+
+## 3. Create the Auto Scale Group
+
+The AWS Auto Scaling continuously monitors applications to ensure they operate at desired performance levels.
+
+✅ In the EC2 console, access Auto Scaling Group. <br />
+✅ The most important setting for the elasticity setup is the capacities under the Group Size:
+
+| Configuration  | Meaning
+|---|---|
+| **Desired Capacity** | Defines the desired number of instances that the system will have. |
+| **Minimum Capacity** | Defines how many instances the system will always have. If the metrics are all fine, this would be how many instances will be running. |
+| **Maximum Capacity** | Defines the maximum number of instances that the system may have, in case of high input load. |
+
+✅ Create it with the below characteristics: <br />
+
+| Configuration  | Setup
+|---|---|
+| **Auto Scaling Group Name** | auto-scaling-group-elasticity-in-AWS-EC2 |
+| **Launch Template** | template-elasticity-in-AWS-EC2 |
+| **Availability Zones and Subnets** | sa-east-1a and sa-east-1b (high availability) |
+| **Group size > Desired Capacity** | 2 |
+| **Group size > Minimum Capacity** | 2 |
+| **Group size > Maximum Capacity** | 6 |
+
+https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/332de211-a4a8-40bb-a432-9a0401db13d6
+
+Once the above settings are completed, the two EC2 instances will be automatically created:
+
+![3a  Create the Auto Scale Group](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/02cd7922-90a2-4929-8c00-4812b576e327)
+
+In the Auto Scaling Group, create a Scheduled Action, so that the application will be monitored to apply the metrics:
+
+https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/bcddad67-f5ec-4919-bb3d-52615f72bb5f
+
+
+
+
