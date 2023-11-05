@@ -57,7 +57,7 @@ The AWS Auto Scaling continuously monitors applications to ensure they operate a
 |---|---|
 | **Auto Scaling Group Name** | auto-scaling-group-elasticity-in-AWS-EC2 |
 | **Launch Template** | template-elasticity-in-AWS-EC2 |
-| **Availability Zones and Subnets** | sa-east-1a and sa-east-1b (high availability) |
+| **Availability Zones and Subnets** | sa-east-1a and sa-east-1c (high availability) |
 | **Group size > Desired Capacity** | 2 |
 | **Group size > Minimum Capacity** | 2 |
 | **Group size > Maximum Capacity** | 6 |
@@ -90,4 +90,74 @@ By this Auto Scaling, once the Average CPU utilization reaches 80%, a new instan
 
 ![4a  Create the Auto Scale Plan](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/5a271102-0dd2-48b9-bf07-357ff355a092)
 
+## 5. Simulate Elasticity in AWS EC2
 
+The configurations in AWS EC2 to explore its elasticity has been completed. <br />
+To simulate, and further understand it, please consider:
+
+## 5a. Access AWS EC2 Instance 
+
+✅ Connect to the AWS EC2 instance via SSH.  <br />
+  - This connection changes depending in the Operational System you are accessing with.  <br />
+  - Refer to [How to Connect to an EC2 Instance Using SSH](https://www.clickittech.com/aws/connect-ec2-instance-using-ssh/).  <br />
+  - For this tutorial, I am accessing AWS EC2 instance via Windows, so SSH PuTTY tool was used.
+    
+✅ Use EC2 user `ec2-user` to access the terminal.
+✅ Redo these steps for both the running instances.
+
+https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/fa189f18-40c6-4a45-9630-07deb833519c
+
+## 5b. Install some Linux tools in the Instances
+
+To simulate the CPU stress, `stress` toll will be used. Also, to the the CPU consumption the instance, `htop` one. <br />
+
+✅ Run the following commands in the terminal:
+
+```linux
+sudo yum update
+sudo yum install stress
+sudo yum install htop
+```
+
+![5b  Install some Linux tools in the instance](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/d681d732-fb72-4a64-afd2-aeb7f084210d)
+
+## 5c. Force the CPU Consumption
+
+✅ Run the following command in the terminal of both instances to force the CPU consumption as 100%:
+
+```linux
+htop
+stress --cpu 1
+htop
+```
+
+![5c  Force the CPU consumption](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/5aa7bef3-fc2c-4f86-b9ca-b7e163139f5c)
+
+## 5d. Elasticity in Action
+
+✅ The CPU consumption of both instance is 100%. <br />
+✅ It is above the configurable threshold of 80%. <br />
+✅ AWS EC2 elasticity enters in action, and raise a new instance. <br />
+
+![5da  Elasticity in Action](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/66152e95-82b0-4bbe-a261-07c980432b50)
+
+![5db  Elasticity in Action](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/9dd4be36-75f9-4682-bf75-fb1aeb2f8f8f)
+
+✅ Under the `Auto Scaling Groups` logs, the `Auto Scaling Plan` in action can be seen:
+
+![5dc  Elasticity in Action](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/293caa54-f624-4bac-9828-7846dd22e5d4)
+
+## 5e. De-stressing the High CPU Consumption
+
+✅ Hit `Ctrl C` in the instances terminals, stopping program `stress`.  <br />
+✅ Wait some minutes.  <br />
+✅ The `Auto Scaling Plan` detects that the CPU consumption is under the threshold of 80% again.  <br />
+✅ The additional instances are terminated.  <br />
+
+![5ea  De-stressing the High CPU Consumption](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/f6e0b364-3931-4755-a272-abb7a87bccf0)
+
+![5eb  De-stressing the High CPU Consumption](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/1b780db9-1f0d-49c6-b0be-5b4a8c9df162)
+
+![5ec  De-stressing the High CPU Consumption](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/e2b411e4-288a-4e41-a448-bb74544f02e5)
+
+## 6. Conclusion
