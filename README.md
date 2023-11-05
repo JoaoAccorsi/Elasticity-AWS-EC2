@@ -161,3 +161,9 @@ htop
 ![5ec  De-stressing the High CPU Consumption](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/e2b411e4-288a-4e41-a448-bb74544f02e5)
 
 ## 6. Conclusion
+
+Once configuring the `Launch Template`, `Auto Scale Group`, `Auto Scale Plan` and by some additional `Linux Commands`, in AWS EC2, the elasticity concept could be simulated, and put into action for learning proposes.
+
+Nowadays, elasticity is crucial for all the application which requires high availability and response time, adapting the changes in workload, and through resource allocation, ensures that available resources are as close as possible to current demand.
+
+So on, with this sample tutorial is was possible to further simulate understand it.
