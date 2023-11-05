@@ -12,7 +12,7 @@ In a distributed system, elasticity is one of the most highlighted characteristi
 
 By this sample tutorial, we will explore elasticity concepts, how to configure it, and the expected outputs under AWS EC2 (Amazon Web Services Elastic Compute Cloud).
 
-## 1. Create your AWS account
+## 1. Create your AWS Account
 
 Amazon Web Services (AWS) is a platform of Cloud Computing services offered by Amazon.com in various geographic areas around the world.
 
@@ -66,12 +66,28 @@ https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/332de211-a4a8-
 
 Once the above settings are completed, the two EC2 instances will be automatically created:
 
-![3a  Create the Auto Scale Group](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/02cd7922-90a2-4929-8c00-4812b576e327)
+![3a  Create the Auto Scale Group](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/6e5065cc-326a-4722-97d9-83467b389635)
 
 In the Auto Scaling Group, create a Scheduled Action, so that the application will be monitored to apply the metrics:
 
 https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/bcddad67-f5ec-4919-bb3d-52615f72bb5f
 
+## 4. Create the Auto Scale Plan
 
+The AWS Auto Scaling Plan defines how AWS will deal one a certain pre-configured parameter is reached. <br /> For example, raise one more instance once the CPU consumption reach 80%.
+
+✅ In the AWS top search bar, choose AWS Auto Scaling. <br />
+✅ Choose EC2 Auto Scaling Groups. <br />
+✅ Set the Auto Scaling Group as `auto-scaling-group-elasticity-in-AWS-EC2` (the one previously created). <br />
+✅ Enter the Name as `scaling-plan-elasticity-in-AWS-EC2`. <br />
+✅ Choose Auto Scaling Groups as custom. <br />
+✅ Disable flag `Enable predictive scaling`. <br />
+✅ Set Average CPU utilization by 80%.
+
+https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/7d304a40-9959-437c-988e-1c29dcf236b5
+
+By this Auto Scaling, once the Average CPU utilization reaches 80%, a new instance will be created in case it did not reach the maximum of 6 instances, defined in the `Auto Scale Group`. In the `Auto Scale Plan` it is also possible to see the graphic of the average CPU utilization:
+
+![4a  Create the Auto Scale Plan](https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/5a271102-0dd2-48b9-bf07-357ff355a092)
 
 
