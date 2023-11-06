@@ -10,7 +10,7 @@
 
 In a distributed system, elasticity is one of the most highlighted characteristics of Cloud Computing. It defines the degree to which the system is able to adapt to changes in workload, and through resource allocation, ensures that available resources are as close as possible to current demand. <br />
 
-By this sample tutorial, we will explore elasticity concepts, how to configure it, and the expected outputs under AWS EC2 (Amazon Web Services Elastic Compute Cloud).
+By this sample tutorial, elasticity concepts will be explored, related to how to configure it, and the expected outputs under AWS EC2 (Amazon Web Services Elastic Compute Cloud).
 
 ## 1. Create your AWS Account
 
@@ -74,7 +74,7 @@ https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/bcddad67-f5ec-
 
 ## 4. Create the Auto Scale Plan
 
-The AWS Auto Scaling Plan defines how AWS will deal one a certain pre-configured parameter is reached. <br /> For example, raise one more instance once the CPU consumption reach 80%.
+The AWS Auto Scaling Plan defines how AWS will deal one a certain pre-configured parameter is reached. <br /> For example, raise one more instance once the CPU consumption reaches 80%.
 
 ✅ In the AWS top search bar, choose AWS Auto Scaling. <br />
 ✅ Choose EC2 Auto Scaling Groups. <br />
@@ -102,7 +102,7 @@ To simulate, and further understand it, please consider:
   - Refer to [How to Connect to an EC2 Instance Using SSH](https://www.clickittech.com/aws/connect-ec2-instance-using-ssh/).  <br />
   - For this tutorial, I am accessing AWS EC2 instance via Windows, so SSH PuTTY tool was used.
     
-✅ Use EC2 user `ec2-user` to access the terminal.
+✅ Use EC2 user `ec2-user` to access the terminal. <br />
 ✅ Redo these steps for both the running instances.
 
 https://github.com/JoaoAccorsi/Elasticity-AWS-EC2/assets/60155867/fa189f18-40c6-4a45-9630-07deb833519c
@@ -123,7 +123,7 @@ sudo yum install htop
 
 ## 5c. Force the CPU Consumption
 
-✅ Run the following command in the terminal of both instances to force the CPU consumption as 100%:
+✅ Run the following command in the terminal of both instances to force the CPU consumption as 100%.
 
 ```linux
 htop
@@ -135,7 +135,7 @@ htop
 
 ## 5d. Elasticity in Action
 
-✅ The CPU consumption of both instance is 100%. <br />
+✅ The CPU consumption of AWS EC2 is in 100%. <br />
 ✅ It is above the configurable threshold of 80%. <br />
 ✅ AWS EC2 elasticity enters in action, and raise a new instance. <br />
 
