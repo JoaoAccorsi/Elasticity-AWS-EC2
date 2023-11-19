@@ -19,7 +19,7 @@ Amazon Web Services (AWS) is a platform of Cloud Computing services offered by A
 ✅ Register (if needed) for the free tear account: [AWS Free Tier](https://aws.amazon.com/free/?trk=d0b462ed-a9ff-4714-8a75-634758c49d4c&sc_channel=ps&ef_id=Cj0KCQjw-pyqBhDmARIsAKd9XIOb-rhX0ce5hpe-7IZn3ObRddaGpEZHkMFbCtnjh3rFDg-_Uvq_DBUaAgusEALw_wcB:G:s&s_kwcid=AL!4422!3!531081610038!e!!g!!aws%20free%20vps%20server!12024810921!121376982932&all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all). <br />
 ✅ Sign In with your AWS account: [AWS Console](https://aws.amazon.com/?nc1=h_ls).
 
-## 2. Create the Lauch Template
+## 2. Create the Launch Template
 
 This template defines the image for the creation of the Virtual Machines.
 
